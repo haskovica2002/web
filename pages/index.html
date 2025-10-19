@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Haskovic | Portfolio SPA</title>
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== Navigation ===== -->
+  <nav>
+    <a href="#home" data-page="home.html">Home</a>
+    <a href="#about" data-page="about.html">About</a>
+    <a href="#resume" data-page="resume.html">Resume</a>
+    <a href="#services" data-page="services.html">Services</a>
+    <a href="#portfolio" data-page="portfolio.html">Portfolio</a>
+    <a href="#contact" data-page="contact.html">Contact</a>
+    <a href="#login" data-page="login.html">Login</a>
+  </nav>
+
+  <!-- ===== Dynamic Content Container ===== -->
+  <main id="content" data-aos="fade-up">
+    <!-- Page content will load here -->
+  </main>
+
+  <!-- ===== JS Files ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <script>
+    // Load page dynamically
+    async function loadPage(page) {
+      const res = await fetch(page);
+      const html = await res.text();
+      document.getElementById("content").innerHTML = html;
+
+      // Reinitialize animations/libraries
+      AOS.init({ duration: 1000, once: true });
+      GLightbox({ selector: ".glightbox" });
+    }
+
+    // Handle menu clicks
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const page = e.target.getAttribute("data-page");
+        loadPage(page);
+        window.history.pushState({ page }, "", e.target.getAttribute("href"));
+      });
+    });
+
+    // Handle browser back/forward
+    window.addEventListener("popstate", e => {
+      if (e.state && e.state.page) loadPage(e.state.page);
+    });
+
+    // Load home page by default
+    loadPage("home.html");
+  </script>
+
+  <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>

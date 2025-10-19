@@ -1,0 +1,111 @@
+body {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: #0d1117;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(13,17,23,0.9);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00bcd4;
+}
+
+section {
+  padding: 120px 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #00bcd4;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-item img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.4s;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+form input, form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  background: #00bcd4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#login {
+  max-width: 400px;
+  margin: 120px auto;
+  text-align: center;
+}
+
+#login input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  background: #161b22;
+  color: white;
+  font-size: 1rem;
+}
+
+#login button {
+  width: 100%;
+  padding: 12px;
+  background: #00bcd4;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#login button:hover {
+  background: #0097a7;
+}
+
+#login p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
